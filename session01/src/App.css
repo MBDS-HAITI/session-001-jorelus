@@ -42,16 +42,18 @@ html, body, #root {
   display: block;
 }
 .title {
-  margin: 0 0 6px 0;
+  
   font-size: clamp(24px, 4vw, 40px);
   font-weight: 800;
   letter-spacing: -0.02em;
+   margin: 0 10px;
 }
 .subtitle {
-  margin: 0;
+ 
   font-size: clamp(14px, 2.2vw, 18px);
   font-weight: 400;
   color: #475569;
+   margin: 0 10px;
 }
 
 .Main {
@@ -123,4 +125,66 @@ button {
 }
 button:hover {
   background-color: #1e40af;
+}
+
+
+.site-header { background:#fff; color:#0f172a; border-bottom:1px solid #e2e8f0; }
+.bar { display:flex; align-items:center; justify-content:space-between; gap:16px; padding:16px 0; }
+
+
+.brand { display:flex; align-items:center; gap:12px; }
+.brand-logo { width:64px; height:auto; display:block; }
+.brand-text .title { margin:0; font-size:22px; font-weight:800; letter-spacing:-0.02em; }
+.brand-text .subtitle { margin:2px 0 0; font-size:14px; color:#475569; }
+
+
+.nav { display:flex; align-items:center; gap:18px; }
+.nav a {
+  text-decoration:none; color:#0f172a; font-weight:600; font-size:15px;
+  padding:8px 10px; border-radius:8px; 
+  
+}
+.nav a:hover { background:#f1f5f9; }
+
+
+.nav-toggle {
+  display:none; position:relative; width:38px; height:32px; border:0; background:transparent; cursor:pointer;
+}
+.nav-toggle span {
+  position:absolute; left:6px; right:6px; height:2px; background:#0f172a; transition:transform .2s ease, top .2s ease, opacity .2s ease;
+}
+.nav-toggle span:nth-child(1){ top:9px; }
+.nav-toggle span:nth-child(2){ top:15px; }
+.nav-toggle span:nth-child(3){ top:21px; }
+.nav-toggle.is-open span:nth-child(1){ top:15px; transform:rotate(45deg); }
+.nav-toggle.is-open span:nth-child(2){ opacity:0; }
+.nav-toggle.is-open span:nth-child(3){ top:15px; transform:rotate(-45deg); }
+
+/* Responsive: menu mobile en off-canvas simple */
+@media (max-width: 900px) {
+  .nav-toggle { display:block; }
+  .nav { 
+    position:absolute; top:64px; right:0; left:0;
+    display:flex; flex-direction:column; gap:0;
+    background:#ffffff; border-bottom:1px solid #e2e8f0;
+    transform: translateY(-16px); opacity:0; pointer-events:none;
+    transition: opacity .2s ease, transform .2s ease;
+  }
+  .nav.show { transform: translateY(0); opacity:1; pointer-events:auto; }
+  .nav a { padding:14px 20px; border-radius:0; border-top:1px solid #f1f5f9; }
+  .brand-logo { width:52px; }
+  .brand-text .title { font-size:18px; }
+  .brand-text .subtitle { font-size:13px; }
+}
+.nav a {
+  text-decoration: none;
+  color: #0f172a;
+  font-weight: 600;
+  margin: 0 10px;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.nav a:hover {
+  color: #2563eb;
 }

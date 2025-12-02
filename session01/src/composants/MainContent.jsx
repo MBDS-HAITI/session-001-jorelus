@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import data from '../data/data.json'
 
 import StudentCard from "./StudentCard";
@@ -8,12 +8,14 @@ export default function MainContent() {
   const [selectedItem, setSelectedItem] = useState(null);
 
     function choiceItemListe(){
-      if(!Array.isArray(data) || data.length === 0)
-        return
       const index = Math.floor(Math.random() * data.length);
       setSelectedItem(data[index]);
     }
 
+    useEffect(() => {
+      choiceItemListe();
+    }, []);
+    
     return (
       <main className="Main">
         <div  className="Container">
