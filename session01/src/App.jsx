@@ -1,19 +1,19 @@
  
+import { useState } from 'react'
 import Header from './composants/Header.jsx'
-import MainContent from './composants/MainContent.jsx'
+import ContentRouter from './composants/ContentRouter.jsx'
 import Footer from './composants/Footer.jsx'
-
-
-
 import './App.css'
 
  
 function App() {
+  const [activeMenu, setActiveMenu] = useState('accueil');
+
   return (
     <div className="app">
-      <Header/>
-      <MainContent/>    
-      <Footer/>
+      <Header onMenuChange={setActiveMenu} activeMenu={activeMenu}/>
+      <ContentRouter activePage={activeMenu} /> 
+      <Footer />
     </div>
   )
 };

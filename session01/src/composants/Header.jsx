@@ -1,41 +1,53 @@
-import { useState } from "react";
+import { useState } from 'react';
+import { menuItems } from '../config/menuConfig';
+import './Header.css';
 
- export default function Header() {
-  const [open, setOpen] = useState(false);
+export default function Header({ onMenuChange, activeMenu }) {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  function menuClick(event) {
-    event.preventDefault();
-    const text = event.target.textContent;
-    alert(`Vous avez cliqué sur : ${text}`);
-    
-  }
-  
-    return (
-      <header className="site-header">
-        <div className="container wrap">
-          <img src="/logoMBDS.png" alt="Logo de la formation" className="brand-logo" />
-          <div>
-            <h1 className="title"> Introduction à React </h1>
-              <h2 className="subtitle">À  la découverte des premières notions de React</h2>
+  const handleMenuClick = (menuId) => {
+    onMenuChange(menuId);
+    setIsMenuOpen(false);
+  };
+
+  return (
+    <header className="Header">
+      <div className="header-container">
+        <div className="brand">
+          <img src="/logoMBDS.png" alt="Logo MBDS" className="logo" />
+          <div className="brand-text">
+            <h1 className="title">Gestion Académique</h1>
+            <p className="subtitle">Plateforme de Gestion des Données</p>
           </div>
         </div>
-        <button className= {`nav-toggle ${open ? "is-open" : ""}`}
-        aria-label="Ouvrir le menu"
-        aria-expanded={open}
-        onClick={() => setOpen(!open)}>
-          <span />
-          <span />
-          <span />
+
+        <button className="menu-toggle" onClick={() => setIsMenuOpen(!isMenuOpen)}>
+          ☰
         </button>
 
-        <nav className ={`nav ${open ? "show" : ""}`}>
-          
-              <a href="#Notes" onClick={menuClick}>Note</a>
-              <a href="#Etudiants" onClick={menuClick}>Etudiants</a>
-              <a href="#Matières" onClick={menuClick}>Matieres</a>
-              <a href="#A propos" onClick={menuClick}>A propos</a>
-            </nav>
-      </header>
-          );
-        }
-        
+        <nav className={`nav ${isMenuOpen ? 'open' : ''}`}>
+          <ul className="nav-list">
+            {menuItems.map((item) => (
+              <li key={item.id} className="nav-item">
+                <button
+                  className={`nav-link ${activeMenu === item.id ? 'active' : ''}`}
+                  onClick={() => handleMenuClick(item.id)}
+                  style={{
+                    '--color': item.color
+                  }}
+                >
+                  <span className="nav-icon">{item.icon}</span>
+                  <span className="nav-text">
+                    <span className="nav-label">{item.label}</span>
+                    <span className="nav-description">{item.description}</span>
+                  </span>
+                  <span className="nav-arrow">→</span>
+                </button>
+              </li>
+            ))}
+          </ul>
+        </nav>
+      </div>
+    </header>
+  );
+}
