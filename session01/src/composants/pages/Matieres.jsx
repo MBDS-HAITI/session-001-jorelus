@@ -1,51 +1,56 @@
-import { matieres, notes } from "../../data/index.js";
+import { useMemo } from 'react';
+import { notes, matieres } from '../../data';
 
 export default function Matieres() {
-  // Calculer les statistiques par matière
-  const matiereStats = matieres.map(matiere => {
-    const cours = notes.filter(item => item.course === matiere);
-    const grades = cours.map(item => item.grade);
-    const moyenne = (grades.reduce((a, b) => a + b, 0) / grades.length).toFixed(1);
-    
-    return {
-      name: matiere,
-      count: cours.length,
-      moyenne: moyenne,
-      max: Math.max(...grades),
-      min: Math.min(...grades)
-    };
-  });
+  const stats = useMemo(() => {
+    return matieres.map((courseName) => {
+      const recs = notes.filter(({ course }) =>
+        (course ?? 'Non renseignée') === (courseName ?? 'Non renseignée')
+      );
+
+      const values = recs
+        .map(({ note }) => {
+          const v = typeof note === 'number' ? note : parseFloat(note);
+          return Number.isFinite(v) ? v : null;
+        })
+        .filter((v) => v !== null);
+
+      const count = recs.length;
+      const avg = values.length ? (values.reduce((a, b) => a + b, 0) / values.length).toFixed(2) : '-';
+      const max = values.length ? Math.max(...values) : '-';
+      const min = values.length ? Math.min(...values) : '-';
+
+      return { course: courseName ?? 'Non renseignée', count, avg, max, min };
+    });
+  }, [notes, matieres]);
 
   return (
-    <div className="page-content">
-      <h2>📚 Matières</h2>
-      <p>Liste des matières - {matieres.length} matières</p>
-      
-      <div className="content-table">
-        <table className="data-table">
-          <thead>
-            <tr>
-              <th>Matière</th>
-              <th>Enregistrements</th>
-              <th>Moyenne</th>
-              <th>Max</th>
-              <th>Min</th>
+    <main className="Main page-content">
+      <h1>📚 Matières</h1>
+      <p style={{ color: '#64748b' }}>Total matières : {matieres.length}</p>
+
+      <table style={{ width: '100%', borderCollapse: 'collapse', marginTop: 16 }}>
+        <thead>
+          <tr>
+            <th style={{ textAlign: 'left', padding: 8, borderBottom: '1px solid #e6eef8' }}>Matière</th>
+            <th style={{ textAlign: 'right', padding: 8, borderBottom: '1px solid #e6eef8' }}>Enregistrements</th>
+            <th style={{ textAlign: 'right', padding: 8, borderBottom: '1px solid #e6eef8' }}>Moyenne</th>
+            <th style={{ textAlign: 'right', padding: 8, borderBottom: '1px solid #e6eef8' }}>Max</th>
+            <th style={{ textAlign: 'right', padding: 8, borderBottom: '1px solid #e6eef8' }}>Min</th>
+          </tr>
+        </thead>
+        <tbody>
+          {stats.map(({ course, count, avg, max, min }) => (
+            <tr key={course}>
+              <td style={{ padding: 8, borderBottom: '1px solid #f1f5f9' }}>{course}</td>
+              <td style={{ padding: 8, textAlign: 'right', borderBottom: '1px solid #f1f5f9' }}>{count}</td>
+              <td style={{ padding: 8, textAlign: 'right', borderBottom: '1px solid #f1f5f9' }}>{avg}</td>
+              <td style={{ padding: 8, textAlign: 'right', borderBottom: '1px solid #f1f5f9' }}>{max}</td>
+              <td style={{ padding: 8, textAlign: 'right', borderBottom: '1px solid #f1f5f9' }}>{min}</td>
             </tr>
-          </thead>
-          <tbody>
-            {matiereStats.map((stat, idx) => (
-              <tr key={idx}>
-                <td>{stat.name}</td>
-                <td>{stat.count}</td>
-                <td className="grade">{stat.moyenne}/100</td>
-                <td className="grade good">{stat.max}/100</td>
-                <td className="grade low">{stat.min}/100</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
-    </div>
+          ))}
+        </tbody>
+      </table>
+    </main>
   );
 }
-

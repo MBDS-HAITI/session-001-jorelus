@@ -14,8 +14,8 @@
         "unique_id": 2,
         "course": "Physics 505",
         "student": {
-            "firstname": "Kevin",
-            "lastname": "Green",
+            "firstname": "Josselet",
+            "lastname": "Orelus",
             "id": 7912
         },
         "date": "2022-11-01",
@@ -25,8 +25,8 @@
         "unique_id": 3,
         "course": "Chemistry 606",
         "student": {
-            "firstname": "James",
-            "lastname": "Murphy",
+            "firstname": "Huguens",
+            "lastname": "Aime",
             "id": 5589
         },
         "date": "2022-02-20",
@@ -124,8 +124,8 @@
         "unique_id": 12,
         "course": "Chemistry 606",
         "student": {
-            "firstname": "Stephanie",
-            "lastname": "Perez",
+            "firstname": "Caleb",
+            "lastname": "Toussaint",
             "id": 2176
         },
         "date": "2020-01-26",
@@ -201,8 +201,8 @@
         "unique_id": 19,
         "course": "History 303",
         "student": {
-            "firstname": "Michael",
-            "lastname": "Hall",
+            "firstname": "Jasmin",
+            "lastname": "Michel",
             "id": 5220
         },
         "date": "2021-02-12",

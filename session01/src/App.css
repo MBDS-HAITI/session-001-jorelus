@@ -219,6 +219,24 @@ html, body, #root {
   transition: all 0.2s ease;
 }
 
+/* ================================
+   PAGE TRANSITION / FADE
+   ================================ */
+.content-fade {
+  animation: contentFadeIn 320ms ease both;
+}
+
+@keyframes contentFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 .nav a:hover {
   background: #f1f5f9;
   color: #2563eb;

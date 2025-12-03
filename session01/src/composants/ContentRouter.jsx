@@ -23,9 +23,11 @@ export default function ContentRouter({ activePage }) {
   };
 
   return (
-    <main className="Main" key={activePage}>
-      <div className="Container">
-        {renderPage()}
+    <main className="Main">
+      <div key={activePage} className="content-fade">
+        <div className="Container">
+          {renderPage()}
+        </div>
       </div>
     </main>
   );
