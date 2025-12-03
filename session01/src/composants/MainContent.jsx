@@ -5,9 +5,13 @@ import StudentCard from "./StudentCard";
 
 
 export default function MainContent() {
+
+  
+
   const [selectedItem, setSelectedItem] = useState(null);
 
     function choiceItemListe(){
+      if (!Array.isArray(data) || data.length === 0) return;
       const index = Math.floor(Math.random() * data.length);
       setSelectedItem(data[index]);
     }
@@ -20,12 +24,17 @@ export default function MainContent() {
       <main className="Main">
         <div  className="Container">
           
+          
+
+          <hr className="sep" />
+
         <h1>Tirage aléatoire dans la liste</h1>
-          <button onClick={choiceItemListe}>Choisir un enregistrement aléatoire</button>
+          <button className="btn-random" onClick={choiceItemListe}>
+            Choisir un enregistrement aléatoire</button>
           
           {selectedItem ? (
             <>
-            <h2>Affichage de l'enregistrement tiré du tableau</h2>
+            <h3>Affichage de l'enregistrement tiré du tableau</h3>
             <StudentCard item={selectedItem} />
             </>
           ) : (

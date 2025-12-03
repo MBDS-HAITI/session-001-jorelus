@@ -42,14 +42,12 @@ html, body, #root {
   display: block;
 }
 .title {
-  
   font-size: clamp(24px, 4vw, 40px);
   font-weight: 800;
   letter-spacing: -0.02em;
    margin: 0 10px;
 }
 .subtitle {
- 
   font-size: clamp(14px, 2.2vw, 18px);
   font-weight: 400;
   color: #475569;
@@ -187,4 +185,31 @@ button:hover {
 
 .nav a:hover {
   color: #2563eb;
+}
+
+.sep { border: none; height: 1px; background: #e2e8f0; margin: 24px 0; }
+.btn-random {
+  background: #2563eb; color:#fff; border:0;
+  padding: 10px 16px; border-radius: 8px; cursor: pointer;
+  
+}
+.btn-random:hover { background:#1d4ed8; }
+
+.footer {
+  background: #0f172a;
+  color: #f1f5f9;
+  text-align: center;
+  padding: 20px 0;
+  font-size: 15px;
+  margin-top: auto;
+  border-top: 2px solid #1e293b;
+}
+footer p {
+  margin: 5px 0;
+}
+
+@media (max-width: 600px) {
+  .footer p {
+    font-size: 14px;
+  }
 }
