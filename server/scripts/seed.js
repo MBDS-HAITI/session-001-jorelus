@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const Student = require('../models/Student');
 const Course = require('../models/Course');
 const Grade = require('../models/Grade');
-const rawData = require('../../session01/src/data/data.json');
+//const rawData = require('../../session01/src/data/data.json');
 
 // MongoDB Atlas URI from .env
 const uri = process.env.MONGODB_URI;
