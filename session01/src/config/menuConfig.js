@@ -1,37 +1,42 @@
 export const menuItems = [
   {
-    id: 'accueil',
-    label: 'Accueil',
-    description: 'Tirage aléatoire',
+    id: 'home',
+    label: 'Home',
+    description: 'Random Draw',
     icon: '🎲',
-    color: '#3b82f6'
+    color: '#3b82f6',
+    path: '/'
   },
   {
-    id: 'notes',
-    label: 'Notes',
-    description: 'Consulter les notes',
+    id: 'grades',
+    label: 'Grades',
+    description: 'View grades',
     icon: '📊',
-    color: '#3b82f6'
+    color: '#3b82f6',
+    path: '/grades'
   },
   {
-    id: 'etudiants',
-    label: 'Etudiants',
-    description: 'Gerer les étudiants',
+    id: 'students',
+    label: 'Students',
+    description: 'Manage students',
     icon: '👥',
-    color: '#8b5cf6'
+    color: '#8b5cf6',
+    path: '/students'
   },
   {
-    id: 'matieres',
-    label: 'Matieres',
-    description: 'Gérer les matières',
+    id: 'courses',
+    label: 'Courses',
+    description: 'Manage courses',
     icon: '📚',
-    color: '#06b6d4'
+    color: '#06b6d4',
+    path: '/courses'
   },
   {
-    id: 'apropos',
-    label: 'A propos',
-    description: 'Informations',
+    id: 'about',
+    label: 'About',
+    description: 'Information',
     icon: 'ℹ️',
-    color: '#f59e0b'
+    color: '#f59e0b',
+    path: '/about'
   }
 ];

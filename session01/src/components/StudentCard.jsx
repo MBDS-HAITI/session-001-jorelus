@@ -1,9 +1,9 @@
 export default function StudentCard({ item }) {
   if (!item) {
-    return null; // si rien à afficher
+    return null; // if nothing to display
   }
 
-  // Fonction pour obtenir la couleur selon le cours
+  // Function to get color by course
   const getCourseColor = (course) => {
     const colors = {
       "Math 101": "#3b82f6",
@@ -20,12 +20,12 @@ export default function StudentCard({ item }) {
 
   return (
     <div className="student-card" style={{ borderLeftColor: getCourseColor(item.course) }}>
-      <p><strong>📚 Cours :</strong> {item.course}</p>
-      <p><strong>👤 Étudiant :</strong> {item.student.firstname} {item.student.lastname}</p>
-      <p><strong>🆔 ID Étudiant :</strong> {item.student.id}</p>
-      <p><strong>#️⃣ ID unique :</strong> {item.unique_id}</p>
-      <p><strong>📅 Date :</strong> {item.date}</p>
-      <p><strong>📊 Note :</strong> <span style={{ 
+      <p><strong>📚 Course:</strong> {item.course}</p>
+      <p><strong>👤 Student:</strong> {item.student.firstname} {item.student.lastname}</p>
+      <p><strong>🆔 Student ID:</strong> {item.student.id}</p>
+      <p><strong>#️⃣ Unique ID:</strong> {item.unique_id}</p>
+      <p><strong>📅 Date:</strong> {item.date}</p>
+      <p><strong>📊 Grade:</strong> <span style={{ 
         backgroundColor: item.grade >= 70 ? '#d1fae5' : item.grade >= 60 ? '#fef3c7' : '#fee2e2',
         color: item.grade >= 70 ? '#065f46' : item.grade >= 60 ? '#92400e' : '#7f1d1d',
         padding: '4px 12px',

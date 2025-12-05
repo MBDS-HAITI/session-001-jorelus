@@ -9,7 +9,7 @@ export default function Menu({ onSelectCourse }) {
   const [expandedFilter, setExpandedFilter] = useState(false);
   const [hoveredCourse, setHoveredCourse] = useState(null);
 
-  // Icônes et couleurs pour les cours
+  // Icons and colors for courses
   const courseIcons = {
     "Math 101": "📐",
     "Physics 505": "⚛️",
@@ -78,8 +78,8 @@ export default function Menu({ onSelectCourse }) {
       {/* Header avec titre et sous-titre */}
       <div className="menu-header">
         <div className="menu-title-wrapper">
-          <h2 className="menu-title">🎓 Gestionnaire de Cours</h2>
-          <p className="menu-subtitle">Explorez et filtrez les enregistrements académiques</p>
+          <h2 className="menu-title">🎓 Course Manager</h2>
+          <p className="menu-subtitle">Explore and filter academic records</p>
         </div>
       </div>
 
@@ -88,7 +88,7 @@ export default function Menu({ onSelectCourse }) {
         <div className="search-wrapper">
           <input
             type="text"
-            placeholder="🔍 Rechercher un cours..."
+            placeholder="🔍 Search a course..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
             className="search-input"
@@ -125,19 +125,19 @@ export default function Menu({ onSelectCourse }) {
         </button>
       </div>
 
-      {/* Section des boutons de cours */}
+      {/* Course Buttons Section */}
       <div className="menu-items">
         <button
           className={`menu-btn menu-btn-all ${selectedCourse === "all" ? "active" : ""} ${hoveredCourse === "all" ? "hovered" : ""}`}
           onClick={() => handleCourseChange("all")}
           onMouseEnter={() => setHoveredCourse("all")}
           onMouseLeave={() => setHoveredCourse(null)}
-          title="Afficher tous les enregistrements"
+          title="Show all records"
         >
           <span className="btn-icon">📋</span>
           <div className="btn-content">
-            <span className="btn-text">Tous les cours</span>
-            <span className="btn-desc">Vue complète</span>
+            <span className="btn-text">All Courses</span>
+            <span className="btn-desc">Complete View</span>
           </div>
           <span className="btn-count">{getCourseCount("all")}</span>
         </button>
@@ -149,7 +149,7 @@ export default function Menu({ onSelectCourse }) {
             onClick={() => handleCourseChange(course)}
             onMouseEnter={() => setHoveredCourse(course)}
             onMouseLeave={() => setHoveredCourse(null)}
-            title={`${course} - ${getCourseCount(course)} enregistrement(s)`}
+            title={`${course} - ${getCourseCount(course)} record(s)`}
             style={{
               "--course-color": courseColors[course] || "#2563eb",
               "--border-color": courseColors[course] || "#2563eb"
@@ -166,7 +166,7 @@ export default function Menu({ onSelectCourse }) {
 
         {searchTerm && sortedCourses.length === 0 && (
           <div className="menu-empty">
-            <p>🔎 Aucun cours ne correspond à votre recherche</p>
+            <p>🔎 No course matches your search</p>
             <button 
               className="reset-search-btn"
               onClick={() => setSearchTerm("")}
@@ -182,7 +182,7 @@ export default function Menu({ onSelectCourse }) {
         <div className="stat-item">
           <span className="stat-icon">📚</span>
           <div className="stat-content">
-            <span className="stat-label">Moyennes:</span>
+            <span className="stat-label">Averages:</span>
             <span className="stat-value">{stats.avgGrade}/100</span>
           </div>
         </div>
@@ -213,7 +213,7 @@ export default function Menu({ onSelectCourse }) {
       {selectedCourse !== "all" && (
         <div className="selection-indicator">
           <span className="indicator-icon">{courseIcons[selectedCourse] || "📚"}</span>
-          <span className="indicator-text">Cours sélectionné: <strong>{selectedCourse}</strong></span>
+          <span className="indicator-text">Selected Course: <strong>{selectedCourse}</strong></span>
           <button 
             className="indicator-close"
             onClick={() => handleCourseChange("all")}

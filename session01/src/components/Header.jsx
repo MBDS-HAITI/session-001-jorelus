@@ -1,14 +1,10 @@
 import { useState } from 'react';
+import { NavLink } from 'react-router-dom';
 import { menuItems } from '../config/menuConfig';
 import './Header.css';
 
-export default function Header({ onMenuChange, activeMenu }) {
+export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-
-  const handleMenuClick = (menuId) => {
-    onMenuChange(menuId);
-    setIsMenuOpen(false);
-  };
 
   return (
     <header className="Header">
@@ -29,9 +25,10 @@ export default function Header({ onMenuChange, activeMenu }) {
           <ul className="nav-list">
             {menuItems.map((item) => (
               <li key={item.id} className="nav-item">
-                <button
-                  className={`nav-link ${activeMenu === item.id ? 'active' : ''}`}
-                  onClick={() => handleMenuClick(item.id)}
+                <NavLink
+                  to={item.path}
+                  className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`}
+                  onClick={() => setIsMenuOpen(false)}
                   style={{
                     '--color': item.color
                   }}
@@ -42,7 +39,7 @@ export default function Header({ onMenuChange, activeMenu }) {
                     <span className="nav-description">{item.description}</span>
                   </span>
                   <span className="nav-arrow">→</span>
-                </button>
+                </NavLink>
               </li>
             ))}
           </ul>

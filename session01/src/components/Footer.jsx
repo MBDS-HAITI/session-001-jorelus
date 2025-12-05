@@ -23,7 +23,7 @@
         <p>
            Bonjour, on est le {dayLabel}, {month} {year} et il est {hour}:{minute}:{second}
         </p>
-        © 2025 - Orelus Josselet, Tous droits réservés.
+        © 2025 - Orelus Josselet, All rights reserved.
       </footer>
       
     );

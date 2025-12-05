@@ -1,6 +1,6 @@
 import { aproposInfo } from '../../data/index.js';
 
-export default function Apropos() {
+export default function About() {
   const { title, description, contact, stats } = aproposInfo;
   const { email, phone, programmeur } = contact;
   const { totalEtudiants, totalMatieres, totalNotes, global, parMatiere } = stats;
@@ -8,64 +8,64 @@ export default function Apropos() {
   return (
     <main className="Main page-content apropos-page">
       <div className="apropos-header">
-        <h1>ℹ️ À Propos</h1>
+        <h1>ℹ️ About</h1>
         <p className="apropos-description">{description}</p>
       </div>
 
       <div className="apropos-container">
         
-        {/* Section Titre */}
+        {/* Title Section */}
         <section className="apropos-section">
           <h2>{title}</h2>
           <p>
-          La Faculté des Sciences de l’Université d’État d’Haïti offre depuis 1999 un programme de Maitrise
-          (MBDS- Bases de Données et Intégration de Systèmes) en partenariat avec l’Université de Nice,
+          The Faculty of Sciences of the State University of Haiti has been offering since 1999 a Master's program
+          (MBDS - Databases and Systems Integration) in partnership with the University of Nice,
           Sophia Antipolis.
           </p>
         </section>
 
-        {/* Section Statistiques Globales */}
+        {/* Global Statistics Section */}
         <section className="apropos-section">
-          <h2>📊 Statistiques Globales</h2>
+          <h2>📊 Global Statistics</h2>
           <div className="stats-grid">
             <div className="stat-card">
               <div className="stat-icon">👥</div>
               <div className="stat-content">
-                <p className="stat-label">Étudiants</p>
+                <p className="stat-label">Students</p>
                 <p className="stat-value">{totalEtudiants}</p>
               </div>
             </div>
             <div className="stat-card">
               <div className="stat-icon">📚</div>
               <div className="stat-content">
-                <p className="stat-label">Matières</p>
+                <p className="stat-label">Courses</p>
                 <p className="stat-value">{totalMatieres}</p>
               </div>
             </div>
             <div className="stat-card">
               <div className="stat-icon">📝</div>
               <div className="stat-content">
-                <p className="stat-label">Enregistrements</p>
+                <p className="stat-label">Records</p>
                 <p className="stat-value">{totalNotes}</p>
               </div>
             </div>
             <div className="stat-card">
               <div className="stat-icon">⭐</div>
               <div className="stat-content">
-                <p className="stat-label">Moyenne Globale</p>
+                <p className="stat-label">Global Average</p>
                 <p className="stat-value">{global.moyenne}/100</p>
               </div>
             </div>
           </div>
         </section>
 
-        {/* Section Statistiques Détaillées */}
+        {/* Detailed Statistics Section */}
         <section className="apropos-section">
-          <h2>📈 Statistiques Détaillées</h2>
+          <h2>📈 Detailed Statistics</h2>
           <div className="stats-detailed">
             <div className="stat-item">
               <span className="stat-icon-text">📊</span>
-              <span className="stat-label">Moyenne</span>
+              <span className="stat-label">Average</span>
               <span className="stat-value">{global.moyenne}</span>
             </div>
             <div className="stat-item">
@@ -80,29 +80,29 @@ export default function Apropos() {
             </div>
             <div className="stat-item">
               <span className="stat-icon-text">📍</span>
-              <span className="stat-label">Médiane</span>
+              <span className="stat-label">Median</span>
               <span className="stat-value">{global.median}</span>
             </div>
             <div className="stat-item">
               <span className="stat-icon-text">📉</span>
-              <span className="stat-label">Écart-type</span>
+              <span className="stat-label">Std Deviation</span>
               <span className="stat-value">{global.standardDeviation}</span>
             </div>
           </div>
         </section>
 
-        {/* Section Performances par Matière */}
+        {/* Performance by Course Section */}
         <section className="apropos-section">
-          <h2>📚 Performances par Matière</h2>
+          <h2>📚 Performance by Course</h2>
           <table style={{ width: '100%', borderCollapse: 'collapse', marginTop: 16 }}>
             <thead>
               <tr>
-                <th style={{ textAlign: 'left', padding: 8, borderBottom: '1px solid #e6eef8' }}>Matière</th>
-                <th style={{ textAlign: 'right', padding: 8, borderBottom: '1px solid #e6eef8' }}>Enregistrements</th>
-                <th style={{ textAlign: 'right', padding: 8, borderBottom: '1px solid #e6eef8' }}>Moyenne</th>
+                <th style={{ textAlign: 'left', padding: 8, borderBottom: '1px solid #e6eef8' }}>Course</th>
+                <th style={{ textAlign: 'right', padding: 8, borderBottom: '1px solid #e6eef8' }}>Records</th>
+                <th style={{ textAlign: 'right', padding: 8, borderBottom: '1px solid #e6eef8' }}>Average</th>
                 <th style={{ textAlign: 'right', padding: 8, borderBottom: '1px solid #e6eef8' }}>Max</th>
                 <th style={{ textAlign: 'right', padding: 8, borderBottom: '1px solid #e6eef8' }}>Min</th>
-                <th style={{ textAlign: 'right', padding: 8, borderBottom: '1px solid #e6eef8' }}>Médiane</th>
+                <th style={{ textAlign: 'right', padding: 8, borderBottom: '1px solid #e6eef8' }}>Median</th>
               </tr>
             </thead>
             <tbody>
@@ -120,13 +120,13 @@ export default function Apropos() {
           </table>
         </section>
 
-        {/* Section Contact */}
+        {/* Contact Section */}
         <section className="apropos-section contact-section">
           <h2>📞 Contact</h2>
           <div className="contact-info">
-            <p><strong>Email :</strong> <a href={`mailto:${email}`}>{email}</a></p>
-            <p><strong>Téléphone :</strong> <a href={`tel:${phone.replace(/\s/g, '')}`}>{phone}</a></p>
-            <p><strong>Programmeur :</strong> <a href={`prog:${programmeur}`}>{programmeur}</a></p>
+            <p><strong>Email:</strong> <a href={`mailto:${email}`}>{email}</a></p>
+            <p><strong>Phone:</strong> <a href={`tel:${phone.replace(/\s/g, '')}`}>{phone}</a></p>
+            <p><strong>Developer:</strong> <a href={`prog:${programmeur}`}>{programmeur}</a></p>
           </div>
         </section>
       </div>

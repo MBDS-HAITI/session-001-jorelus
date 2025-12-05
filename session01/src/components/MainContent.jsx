@@ -26,22 +26,22 @@ export default function MainContent() {
           <div className="section-header">
             <h1>Tirage aléatoire dans la liste</h1>
             <p className="section-subtitle">
-              {data.length} enregistrements disponibles
+              {data.length} records available
             </p>
           </div>
           
           <button className="btn-random btn-lg" onClick={choiceItemListe}>
-            🎲 Choisir un enregistrement aléatoire
+            🎲 Choose a random record
           </button>
           
           {selectedItem ? (
             <div className="result-container">
-              <h3 className="result-title">✓ Enregistrement sélectionné</h3>
+              <h3 className="result-title">✓ Selected record</h3>
               <StudentCard item={selectedItem} />
             </div>
           ) : (
             <div className="empty-state">
-              <p>📋 Aucun enregistrement sélectionné pour l'instant.</p>
+              <p>📋 No record selected yet.</p>
             </div>
           )}
         </div>
