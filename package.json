@@ -1,0 +1,24 @@
+{
+  "name": "mbds-app",
+  "version": "1.0.0",
+  "description": "MBDS Student Management System - Root package.json",
+  "scripts": {
+    "start": "node start.js",
+    "server": "cd server && npm start",
+    "dev": "cd session01 && npm run dev",
+    "seed": "cd server && npm run seed",
+    "seed-and-start": "cd server && npm run seed-and-start",
+    "install-all": "npm install && cd server && npm install && cd ../session01 && npm install && cd ..",
+    "build": "cd session01 && npm run build"
+  },
+  "keywords": [
+    "MBDS",
+    "Student",
+    "Management",
+    "React",
+    "Node.js",
+    "MongoDB"
+  ],
+  "author": "MBDS",
+  "license": "ISC"
+}
